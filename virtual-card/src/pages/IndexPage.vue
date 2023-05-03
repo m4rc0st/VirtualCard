@@ -9,30 +9,28 @@
         Faça login e comece a usar!
       </h2>
     </div>
-  <br>
-    <div>
-      <p class="subtitle">Endereço de Email</p>
-      <q-input color="grey-3" outlined v-model="text" label="Email">
+    <div class="q-pa-md">
+      <div class="q-pa-md q-gutter-sm">
+      <p class="title-infor">Endereço de Email</p>
+      <q-input color="grey-3" outlined  v-model="email" label="Email">
           <template v-slot:prepend>
             <q-icon class="material-symbols-outlined" name="mail" color="grey" />
           </template>
         </q-input>
-    </div>
-    <br>
-    <div>
-      <p class="subtitle">Senha</p>
-      <q-input  color="grey-3" outlined v-model="text" label="*******">
+        <p class="title-infor" >Senha</p>
+          <q-input  color="grey-3" outlined v-model="senha" label="Senha">
           <template v-slot:prepend>
             <q-icon class="material-symbols-outlined" name="lock"  color="grey"  />
           </template>
         </q-input>
+      </div>
     </div>
-    <br>
     <q-btn
       no-caps
       unelevated
       class="botao"
       label="Entrar na Plataforma"
+      @click="logar"
     />
     <br>
     <q-link class="links" tag="a" href="www.exemplo.com.br">Esqueci minha senha</q-link>
@@ -44,9 +42,18 @@ import { ref } from 'vue'
 
 export default ({
   name: 'IndexPage',
-  setup () {
+  data () {
     return {
-      text: ref('')
+      email:"",
+      senha:"",
+    }
+  },
+  mounted(){
+
+  },
+  methods:{
+    async logar(){
+      this.$router.push({ name: "perfil" });
     }
   }
 })
@@ -90,5 +97,11 @@ export default ({
   color: white;
   background-color: #E2A411;
   position: center;
+}
+.title-infor {
+  color: rgb(86, 86, 86);
+  font-size: 14px;
+  padding: 8px 0px 9px 0px;
+  border-radius: 7px;
 }
 </style>
